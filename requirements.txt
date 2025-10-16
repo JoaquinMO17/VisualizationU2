@@ -2,3 +2,6 @@ pandas
 plotly
 matplotlib
 seaborn
+numpy
+statsmodels
+
