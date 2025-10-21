@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoDash - Bitcoin</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/navigation.css">
+    <link rel="stylesheet" href="assets/css/cards.css">
+    <link rel="stylesheet" href="assets/css/charts.css">
+    <link rel="stylesheet" href="assets/css/typography.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="brand">
+                    <div class="brand-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="brand-text">CryptoDash</span>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <div class="nav-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                    </div>
+                    <span>Overview</span>
+                </a>
+                <a href="btc.html" class="nav-item active">
+                    <div class="nav-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9 8h4a2 2 0 012 2v1a2 2 0 01-2 2H9"/>
+                            <path d="M9 13h4a2 2 0 012 2v1a2 2 0 01-2 2H9"/>
+                            <path d="M11 4v2m0 12v2"/>
+                        </svg>
+                    </div>
+                    <span>Bitcoin</span>
+                </a>
+                <a href="eth.html" class="nav-item">
+                    <div class="nav-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2">
+                            <polygon points="12,2 6,13 12,17 18,13"/>
+                            <polygon points="12,17 6,13 12,22 18,13"/>
+                        </svg>
+                    </div>
+                    <span>Ethereum</span>
+                </a>
+                <a href="doge.html" class="nav-item">
+                    <div class="nav-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 12h8"/>
+                            <circle cx="9" cy="9" r="1" fill="currentColor"/>
+                            <circle cx="15" cy="9" r="1" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <span>Dogecoin</span>
+                </a>
+                <a href="interest.html" class="nav-item">
+                    <div class="nav-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <span>Interest</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Bitcoin</h1>
+                <p class="page-subtitle">BTC/USD price analysis and statistics</p>
+            </div>
+
+            <div class="grid grid-cols-4">
+                <div class="metric-card" id="current-price">
+                    <div class="metric-header">
+                        <span class="metric-label">Current Price</span>
+                        <div class="metric-icon">
+                            <svg viewBox="0 0 24 24" stroke="#F7931A" stroke-width="2" fill="none">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="metric-value">$0.00</div>
+                    <div class="metric-change neutral">
+                        <span>0.00%</span>
+                        <span class="metric-period">24h change</span>
+                    </div>
+                </div>
+
+                <div class="metric-card" id="high-price">
+                    <div class="metric-header">
+                        <span class="metric-label">24h High</span>
+                        <div class="metric-icon">
+                            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                <polyline points="17 6 23 6 23 12"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="metric-value">$0.00</div>
+                </div>
+
+                <div class="metric-card" id="low-price">
+                    <div class="metric-header">
+                        <span class="metric-label">24h Low</span>
+                        <div class="metric-icon">
+                            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
+                                <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/>
+                                <polyline points="17 18 23 18 23 12"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="metric-value">$0.00</div>
+                </div>
+
+                <div class="metric-card" id="volume-metric">
+                    <div class="metric-header">
+                        <span class="metric-label">Volume</span>
+                        <div class="metric-icon">
+                            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
+                                <rect x="3" y="11" width="4" height="10"/>
+                                <rect x="10" y="6" width="4" height="15"/>
+                                <rect x="17" y="3" width="4" height="18"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="metric-value">$0.00</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-3" style="margin-top: 24px;">
+                <div class="chart-card col-span-2">
+                    <div class="chart-header">
+                        <div>
+                            <h2 class="chart-title">Price Chart</h2>
+                            <p class="chart-subtitle">OHLC data</p>
+                        </div>
+                    </div>
+                    <div class="chart-container" style="height: 400px;">
+                        <canvas id="price-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div>
+                            <h2 class="chart-title">Statistics</h2>
+                            <p class="chart-subtitle">Key metrics</p>
+                        </div>
+                    </div>
+                    <div id="statistics-table"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1" style="margin-top: 24px;">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div>
+                            <h2 class="chart-title">Volume</h2>
+                            <p class="chart-subtitle">Trading volume over time</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="volume-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="assets/js/config/constants.js"></script>
+    <script src="assets/js/config/chartConfig.js"></script>
+    <script src="assets/js/utils/formatters.js"></script>
+    <script src="assets/js/utils/calculations.js"></script>
+    <script src="assets/js/utils/dateUtils.js"></script>
+    <script src="assets/js/data/dataLoader.js"></script>
+    <script src="assets/js/data/dataProcessor.js"></script>
+    <script src="assets/js/components/MetricCard.js"></script>
+    <script src="assets/js/components/PriceChart.js"></script>
+    <script src="assets/js/components/VolumeChart.js"></script>
+    <script src="assets/js/components/OHLCChart.js"></script>
+    <script src="assets/js/components/StatisticsTable.js"></script>
+    <script src="assets/js/components/Navigation.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/pages/btcPage.js"></script>
+</body>
+</html>
