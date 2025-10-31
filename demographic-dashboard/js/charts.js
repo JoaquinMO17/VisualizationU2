@@ -1,4 +1,4 @@
-// Chart configurations and rendering
+// Alguien pone 100% hecho por IA y yo lo degüello
 
 const Charts = {
     instances: {},
@@ -359,10 +359,10 @@ const Charts = {
         const latestYear = processedData.latestYear;
         if (!latestYear) return;
 
-        const topPop = DataLoader.getTopCountries('population', latestYear, 12);
-        const bottomPop = DataLoader.getBottomCountries('population', latestYear, 12);
-        const topGdp = DataLoader.getTopCountries('gdp', latestYear, 12);
-        const bottomGdp = DataLoader.getBottomCountries('gdp', latestYear, 12);
+        const topPop = DataLoader.getTopCountries('population', latestYear, 15);
+        const bottomPop = DataLoader.getBottomCountries('population', latestYear, 15);
+        const topGdp = DataLoader.getTopCountries('gdp', latestYear, 15);
+        const bottomGdp = DataLoader.getBottomCountries('gdp', latestYear, 15);
 
         this.createHorizontalBarChart(
             'topPopulationChart',
@@ -568,7 +568,7 @@ const Charts = {
     },
 
     renderCustomMetrics() {
-        const density = Analytics.calculateEconomicDensity().slice(0, 12);
+        const density = Analytics.calculateEconomicDensity().slice(0, 15);
         if (density.length > 0) {
             this.createHorizontalBarChart(
                 'densityIndexChart',
@@ -579,7 +579,7 @@ const Charts = {
             );
         }
 
-        const velocity = Analytics.calculateDevelopmentVelocity().slice(0, 12);
+        const velocity = Analytics.calculateDevelopmentVelocity().slice(0, 15);
         if (velocity.length > 0) {
             this.createHorizontalBarChart(
                 'velocityScoreChart',
@@ -590,7 +590,7 @@ const Charts = {
             );
         }
 
-        const stability = Analytics.calculateStabilityIndex().slice(0, 12);
+        const stability = Analytics.calculateStabilityIndex().slice(0, 15);
         if (stability.length > 0) {
             this.createHorizontalBarChart(
                 'stabilityIndexChart',
@@ -601,7 +601,7 @@ const Charts = {
             );
         }
 
-        const momentum = Analytics.calculateGrowthMomentum().slice(0, 12);
+        const momentum = Analytics.calculateGrowthMomentum().slice(0, 15);
         if (momentum.length > 0) {
             this.createHorizontalBarChart(
                 'momentumChart',
