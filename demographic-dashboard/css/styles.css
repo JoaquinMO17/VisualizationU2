@@ -351,11 +351,20 @@ body {
 }
 
 #rankingsView .chart-card {
-    min-height: 520px;
+    min-height: 550px;
 }
 
 #rankingsView .chart-card canvas {
-    max-height: 460px;
+    max-height: 490px;
+}
+
+/* Mejoras especificas para Custom Metrics */
+#metricsView .chart-card {
+    min-height: 550px;
+}
+
+#metricsView .chart-card canvas {
+    max-height: 490px;
 }
 
 @media (max-width: 1400px) {
