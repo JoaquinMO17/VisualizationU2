@@ -50,6 +50,43 @@ VisualizationU2/
 ├── requirements.txt
 └── README.md
 ```
+## AI Disclosure Statement
+
+This disclosure outlines the extent and nature of AI-assisted contributions across all components of the project, including the analytical notebooks, the interactive dashboard, and the accompanying storytelling documentation.
+
+### AI Assistance Breakdown by Component
+
+| Component                                                          | Description                                                                                        | Estimated AI Assistance Level               | Assistance Classification                                                                                                | Human Role                                                                                          |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| **03_Time_Series_Analysis.ipynb**                                  | Implements Random Walk tests (ADF), ACF, and volatility clustering analysis on 5 cryptocurrencies. | **≈75% (Level 3 – Significant Assistance)** | AI generated statistical scripts, visualizations (ACF plots, volatility clusters), and result interpretation drafts.     | Human curated parameters, verified statistical assumptions, and refined interpretations.            |
+| **03_Spatial_Analysis.ipynb**                                      | Conducts geographic visualization of search interest using Google Trends data.                     | **≈75% (Level 3 – Significant Assistance)** | AI suggested geographic aggregation methods, produced Plotly choropleths, and drafted analytical summaries.              | Human adjusted region classification, data cleaning, and narrative coherence.                       |
+| **03_Spatiotemporal_Integration.ipynb**                            | Integrates search interest and volatility data using cross-correlation functions (CCF).            | **≈75% (Level 3 – Significant Assistance)** | AI generated methodological framework (lag structure, correlation windowing), code for CCF analysis, and visual outputs. | Human validated lead–lag interpretations, refined plots, and cross-referenced findings with theory. |
+| **Interactive Dashboard**                                          | Web-based data exploration platform showing time series and geographic comparisons.                | **≈10% (Level 1 – Minimal Assistance)**     | AI provided small code snippets for layout and Plotly integration.                                                       | Human manually implemented the full dashboard logic, UX design, and data binding.                   |
+| **Storytelling Document** (`phase3-spatiotemporal-storyboard.pdf`) | Analytical report summarizing methods, results, and insights for stakeholders.                     | **≈75% (Level 3 – Significant Assistance)** | AI assisted in structuring sections, generating analytical narratives, and editing text for clarity.                     | Human authored key insights, ensured factual accuracy, and finalized tone and formatting.           |
+
+### Nature of AI Contributions
+
+AI was primarily used for:
+
+Statistical script generation (ADF, ACF, CCF analysis templates)
+
+Visualization design (plot styles, color scales, dashboard structure)
+
+Methodological guidance (data cleaning, feature aggregation, significance thresholds)
+
+Technical documentation drafting (section organization, summary writing)
+
+Language refinement (clarity, conciseness, and tone consistency)
+
+All generated materials underwent human verification and revision, particularly for:
+
+Statistical correctness
+
+Interpretative accuracy
+
+Ethical and data-source integrity
+
+Style consistency across notebooks and documents
 
 ## Cryptocurrencies Analyzed
 
