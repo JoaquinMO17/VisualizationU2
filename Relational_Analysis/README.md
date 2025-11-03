@@ -5,11 +5,10 @@
 
 This project investigates  relational data using specialized Python libraries. It will implement four main types of relational visualizations and conduct a comparative analysis of their advantages and limitations. The dataset was:
 
+**🔗 [View Interactive Dashboard](https://joaquinmo17.github.io/VisualizationU2/Relational-dashboard)**
+
+
 **facebook_combined.txt** by Stanford 
-
-
-
-### Key Research Questions
 
 
 
@@ -73,6 +72,15 @@ pip install -r ../requirements.txt
 
 6. Visualize network structure and influencer profiles.
 
+### 1. Interactive Dashboard
+
+Explore the data interactively via the web dashboard:
+
+**🔗 [View Interactive Dashboard](https://joaquinmo17.github.io/VisualizationU2/Relational-dashboard)**
+
+The dashboard provides:
+- Real-time visualization of Facebook network.
+- Interactive charts for centrality measures.
 
 ### 2. Data Processing
 Run the processing scripts to clean and merge raw data:
