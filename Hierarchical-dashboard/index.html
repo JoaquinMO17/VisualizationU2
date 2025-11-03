@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demographic Data Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 3h18v18H3z"></path>
+                    <path d="M8 10h8M8 14h8"></path>
+                </svg>
+                <h1>Demographics</h1>
+            </div>
+
+            <div class="menu">
+                <a href="#" class="menu-item active" data-view="overview">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Overview
+                </a>
+                <a href="#" class="menu-item" data-view="population">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    Population
+                </a>
+                <a href="#" class="menu-item" data-view="gdp">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    GDP Analysis
+                </a>
+                <a href="#" class="menu-item" data-view="growth">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                        <polyline points="17 6 23 6 23 12"></polyline>
+                    </svg>
+                    Growth Rates
+                </a>
+                <a href="#" class="menu-item" data-view="correlations">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                        <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                        <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                    </svg>
+                    Correlations
+                </a>
+                <a href="#" class="menu-item" data-view="rankings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                    Rankings
+                </a>
+                <a href="#" class="menu-item" data-view="distributions">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 21H4.6c-.56 0-.93-.47-.93-1.03V3"></path>
+                        <path d="M10 17V9"></path>
+                        <path d="M14 17V5"></path>
+                        <path d="M18 17v-3"></path>
+                        <path d="M6 17v-5"></path>
+                    </svg>
+                    Distributions
+                </a>
+                <a href="#" class="menu-item" data-view="timeseries">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    Time Series
+                </a>
+                <a href="#" class="menu-item" data-view="clustering">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <circle cx="19" cy="5" r="2"></circle>
+                        <circle cx="5" cy="19" r="2"></circle>
+                        <circle cx="19" cy="19" r="2"></circle>
+                        <circle cx="5" cy="5" r="2"></circle>
+                    </svg>
+                    Clustering
+                </a>
+                <a href="#" class="menu-item" data-view="predictions">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    Predictions
+                </a>
+                <a href="#" class="menu-item" data-view="anomalies">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    Anomalies
+                </a>
+                <a href="#" class="menu-item" data-view="metrics">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                    Custom Metrics
+                </a>
+                <a href="#" class="menu-item" data-view="comparison">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Comparison
+                </a>
+                <a href="#" class="menu-item" data-view="data">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="3" y1="15" x2="21" y2="15"></line>
+                        <line x1="9" y1="3" x2="9" y2="21"></line>
+                        <line x1="15" y1="3" x2="15" y2="21"></line>
+                    </svg>
+                    Raw Data
+                </a>
+            </div>
+
+            <div class="file-upload">
+                <label for="csvFile" class="upload-label">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    Load CSV
+                </label>
+                <input type="file" id="csvFile" accept=".csv">
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h2 id="viewTitle">Overview</h2>
+                <div class="data-status" id="dataStatus">Loaded 268 countries</div>
+            </div>
+
+            <!-- Overview View -->
+            <div id="overviewView" class="view active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #E3F2FD;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Total Countries</div>
+                            <div class="stat-value" id="totalCountries">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #F3E5F5;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7B1FA2" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Latest Year</div>
+                            <div class="stat-value" id="latestYear">-</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #FFF3E0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EF6C00" stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Avg Population</div>
+                            <div class="stat-value" id="avgPopulation">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #E8F5E9;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#388E3C" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">Total Records</div>
+                            <div class="stat-value" id="totalRecords">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-grid-2">
+                    <div class="chart-card">
+                        <h3>Top 10 Countries by Population</h3>
+                        <canvas id="overviewPopChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Top 10 Countries by GDP per Capita</h3>
+                        <canvas id="overviewGdpChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Population View -->
+            <div id="populationView" class="view">
+                <div class="chart-grid-2">
+                    <div class="chart-card">
+                        <h3>Population by Country (Latest Year)</h3>
+                        <canvas id="populationChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Population Growth Over Time</h3>
+                        <canvas id="populationTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GDP View -->
+            <div id="gdpView" class="view">
+                <div class="chart-grid-2">
+                    <div class="chart-card">
+                        <h3>GDP per Capita by Country</h3>
+                        <canvas id="gdpChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>GDP Trends Over Time</h3>
+                        <canvas id="gdpTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Growth Rates View -->
+            <div id="growthView" class="view">
+                <div class="chart-grid-2">
+                    <div class="chart-card">
+                        <h3>Population Growth Rates</h3>
+                        <canvas id="growthRateChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>GDP Growth Velocity</h3>
+                        <canvas id="gdpGrowthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Correlations View -->
+            <div id="correlationsView" class="view">
+                <div class="chart-grid-1">
+                    <div class="chart-card">
+                        <h3>Population vs GDP per Capita Correlation</h3>
+                        <canvas id="correlationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rankings View -->
+            <div id="rankingsView" class="view">
+                <div class="chart-grid-2">
+                    <div class="chart-card">
+                        <h3>Top 12 by Population</h3>
+                        <canvas id="topPopulationChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Top 12 by GDP per Capita</h3>
+                        <canvas id="topGdpChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Bottom 12 by Population</h3>
+                        <canvas id="bottomPopulationChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Bottom 12 by GDP per Capita</h3>
+                        <canvas id="bottomGdpChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Distributions View -->
+            <div id="distributionsView" class="view">
+                <div class="chart-grid-2">
+                    <div class="chart-card">
+                        <h3>Population Distribution</h3>
+                        <canvas id="populationDistChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>GDP per Capita Distribution</h3>
+                        <canvas id="gdpDistChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Time Series View -->
+            <div id="timeseriesView" class="view">
+                <div class="chart-grid-1">
+                    <div class="chart-card">
+                        <h3>Multi-Year Evolution Analysis</h3>
+                        <canvas id="timeseriesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clustering View -->
+            <div id="clusteringView" class="view">
+                <div class="chart-grid-1">
+                    <div class="chart-card">
+                        <h3>Country Clustering by Economic Profile</h3>
+                        <canvas id="clusteringChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Predictions View -->
+            <div id="predictionsView" class="view">
+                <div class="chart-grid-2">
+                    <div class="chart-card">
+                        <h3>Population Projection Trends</h3>
+                        <canvas id="populationPredictionChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>GDP Projection Trends</h3>
+                        <canvas id="gdpPredictionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anomalies View -->
+            <div id="anomaliesView" class="view">
+                <div class="chart-grid-2">
+                    <div class="chart-card">
+                        <h3>Population Anomaly Detection</h3>
+                        <canvas id="populationAnomalyChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>GDP Anomaly Detection</h3>
+                        <canvas id="gdpAnomalyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Metrics View -->
+            <div id="metricsView" class="view">
+                <div class="chart-grid-2">
+                    <div class="chart-card">
+                        <h3>Economic Density Index</h3>
+                        <canvas id="densityIndexChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Development Velocity Score</h3>
+                        <canvas id="velocityScoreChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Stability Index</h3>
+                        <canvas id="stabilityIndexChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Growth Momentum</h3>
+                        <canvas id="momentumChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison View -->
+            <div id="comparisonView" class="view">
+                <div class="comparison-controls">
+                    <label>Select up to 5 countries for comparison</label>
+                    <div class="country-selector" id="countrySelector"></div>
+                </div>
+                <div class="chart-grid-1">
+                    <div class="chart-card">
+                        <h3>Multi-Country Comparison</h3>
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Raw Data View -->
+            <div id="dataView" class="view">
+                <div class="data-controls">
+                    <input type="text" id="searchInput" placeholder="Search...">
+                    <button id="exportBtn" class="btn-export">Export CSV</button>
+                </div>
+                <div class="table-wrapper">
+                    <table id="dataTable">
+                        <thead id="tableHead"></thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/dataLoader.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
