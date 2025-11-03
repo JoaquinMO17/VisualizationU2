@@ -88,6 +88,10 @@ Ethical and data-source integrity
 
 Style consistency across notebooks and documents
 
+### Links to AI assistance chats for full disclosure
+- https://gemini.google.com/share/7309f79ef30f
+- https://chatgpt.com/share/690774a0-edbc-8011-86be-9b3f0746df36
+
 ## Cryptocurrencies Analyzed
 
 - **Bitcoin (BTC)** - Market leader and benchmark
